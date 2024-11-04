@@ -1,8 +1,0 @@
-eureka:
-  server:
-    renewal-percent-threshold: 0.5
-  instance:
-    hostname: localhost
-    lease-expiration-duration-in-seconds: 90
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
