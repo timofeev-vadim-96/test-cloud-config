@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: second-service
+server:
+  port: 8081
+eureka:
+  client:
+    register-with-eureka: true
+    #этот сервис не будет обращаться к другим
+    fetch-registry: false
