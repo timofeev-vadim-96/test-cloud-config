@@ -1,0 +1,27 @@
+server:
+  port: 60000
+  forward-headers-strategy: framework #добавление инфы для конечного сервиса, что запрос был спроксирован
+  error:
+    include-message: always
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+  cloud:
+    loadbalancer:
+      cache:
+        enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true #маршрутизация на основе Eureka
+      routes:
+        - id: fs
+          uri: lb://first-service
+          predicates:
+            - Path=/first-service/**
+
+        - id: ss
+          uri: lb://second-service
+          predicates:
+            - Path=/second-service/**
